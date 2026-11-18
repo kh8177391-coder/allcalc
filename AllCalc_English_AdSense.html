@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5336616357099708"
+     crossorigin="anonymous"></script>
+<meta name="description" content="AllCalc offers free online financial, health, math and everyday calculators with clear results.">
+<title>AllCalc — Free Online Calculators</title>
+<style>
+:root{--purple:#7950b8;--purple2:#9b75d0;--pale:#f4effb;--ink:#282333;--muted:#766f80;--line:#e8e0f0;--white:#fff;--bg:#fbf9fd}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+header{background:linear-gradient(125deg,#4d2d78,#956bc5);color:white;padding:22px max(5%,calc((100% - 1180px)/2))}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.logo{font-size:27px;font-weight:800;letter-spacing:.3px}.logo span{color:#e7d7ff}
+nav a{color:white;text-decoration:none;margin-left:20px;font-size:14px}
+.hero{text-align:center;padding:52px 12px 38px}.hero h1{font-size:clamp(30px,5vw,46px);margin:0 0 12px}.hero p{color:#eee4fa;font-size:17px;margin:0 auto 24px;max-width:680px}
+.search{display:flex;max-width:650px;margin:auto;background:white;padding:5px;border-radius:12px}.search input{flex:1;min-width:0;border:0;outline:0;padding:14px;font-size:16px}.search button,.primary{border:0;background:var(--purple);color:white;border-radius:9px;padding:12px 20px;cursor:pointer;font-weight:700}.search button{background:#6d45a5}
+main{max-width:1180px;margin:auto;padding:30px 18px 70px}.intro{display:flex;justify-content:space-between;align-items:end;gap:15px;flex-wrap:wrap}.intro h2{margin:8px 0;font-size:27px}.muted{color:var(--muted);line-height:1.55}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:24px 0 35px}
+.cat{background:white;border:1px solid var(--line);border-radius:15px;padding:19px;text-align:left;cursor:pointer;transition:.18s}.cat:hover,.card:hover{border-color:var(--purple2);transform:translateY(-3px);box-shadow:0 8px 22px #6d45a51a}.cat .emoji{font-size:27px}.cat h3{margin:10px 0 5px}.cat p{margin:0;color:var(--muted);font-size:13px}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 15px}.sectionhead h2{margin:0;font-size:23px}.count{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:14px}
+.card{background:white;border:1px solid var(--line);border-radius:13px;padding:17px;cursor:pointer;transition:.18s}.card .ico{font-size:24px}.card h3{font-size:16px;margin:10px 0 6px}.card p{font-size:13px;color:var(--muted);line-height:1.45;margin:0}
+.panel{display:none;background:white;border:1px solid var(--line);border-radius:16px;padding:23px;margin:25px 0;box-shadow:0 8px 28px #3420470b}.paneltop{display:flex;justify-content:space-between;align-items:start;gap:12px}.panel h2{margin:0 0 8px}.close{border:0;background:var(--pale);color:var(--purple);padding:9px 12px;border-radius:8px;cursor:pointer}
+.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:14px;margin-top:20px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:15px;outline:0;background:white}.field input:focus,.field select:focus{border-color:var(--purple)}
+.actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}.secondary{border:1px solid var(--line);background:white;padding:12px 18px;border-radius:9px;cursor:pointer}
+.result{display:none;background:var(--pale);border-left:4px solid var(--purple);border-radius:9px;padding:17px;margin-top:18px;line-height:1.7}.result strong{font-size:19px;color:#59358b}
+.adbox{border:1px dashed #cfc2dd;border-radius:12px;padding:18px;text-align:center;color:#9489a0;font-size:12px;margin:30px 0;background:#fff}
+footer{background:#251b32;color:white;text-align:center;padding:30px 15px}footer a{color:#e5d6fa;margin:0 8px}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+@media(max-width:600px){nav a{margin:0 7px}.hero{padding-top:38px}.search button{padding:10px}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><div class="logo">All<span>Calc</span></div><nav><a href="#">Home</a><a href="#browse">Calculators</a><a href="#about">About</a></nav></div>
+ <section class="hero"><h1>Free Online Calculators</h1><p>Fast, simple and useful calculators for finance, health, mathematics and everyday life.</p>
+  <div class="search"><input id="search" placeholder="Search calculators..." aria-label="Search calculators"><button onclick="doSearch()">Search</button></div>
+ </section>
+</header>
+<main id="browse">
+ <div class="intro"><div><div class="muted">WELCOME TO ALLCALC</div><h2>Find the calculator you need</h2><div class="muted">Choose a category or search our calculator collection.</div></div></div>
+ <div class="categories" id="categories"></div>
+ <div class="adbox">Advertisement space</div>
+ <div class="panel" id="panel">
+  <div class="paneltop"><div><h2 id="calcTitle"></h2><div class="muted" id="calcDesc"></div></div><button class="close" onclick="closePanel()">Close ✕</button></div>
+  <div class="formgrid" id="fields"></div>
+  <div class="actions"><button class="primary" onclick="runCalc()">Calculate</button><button class="secondary" onclick="resetCalc()">Reset</button></div>
+  <div class="result" id="result" aria-live="polite"></div>
+ </div>
+ <div class="sectionhead"><h2 id="listTitle">Popular Calculators</h2><span class="count" id="count"></span></div>
+ <div class="grid" id="grid"></div><div class="empty" id="empty" hidden>No calculators found. Try another search.</div>
+ <div class="adbox">Advertisement space</div>
+</main>
+<footer id="about"><div class="logo">All<span>Calc</span></div><p>Free online tools to make everyday calculations easier.</p><p><a href="#about">About Us</a><a href="mailto:contact@example.com">Contact</a><a href="#privacy">Privacy Policy</a><a href="#terms">Terms</a></p><small>© 2026 AllCalc. All rights reserved.</small></footer>
+<script>
+const C=[];
+function add(id,name,cat,icon,desc,fields,fn){C.push({id,name,cat,icon,desc,fields,fn})}
+const num=(v,i)=>Number(v[i]||0), money=n=>Number(n).toLocaleString('en-US',{maximumFractionDigits:2});
+add('mortgage','Mortgage Calculator','Financial','🏠','Estimate monthly mortgage payments.',['Loan amount','Annual interest rate (%)','Term (years)'],v=>{let p=num(v,0),r=num(v,1)/1200,n=num(v,2)*12;if(!n)return 'Enter a loan term greater than zero.';return r===0?p/n:p*r/(1-Math.pow(1+r,-n))});
+add('loan','Loan Calculator','Financial','💳','Estimate a fixed monthly loan payment.',['Loan amount','Annual interest rate (%)','Term (years)'],v=>{let p=num(v,0),r=num(v,1)/1200,n=num(v,2)*12;if(!n)return 'Enter a loan term greater than zero.';return r===0?p/n:p*r/(1-Math.pow(1+r,-n))});
+add('autoloan','Auto Loan Calculator','Financial','🚗','Estimate monthly vehicle loan payments.',['Vehicle price','Down payment','Annual interest rate (%)','Term (years)'],v=>{let p=num(v,0)-num(v,1),r=num(v,2)/1200,n=num(v,3)*12;if(p<0||!n)return 'Check the vehicle price, down payment and term.';return r===0?p/n:p*r/(1-Math.pow(1+r,-n))});
+add('interest','Interest Calculator','Financial','📈','Calculate simple interest earned or paid.',['Principal','Annual interest rate (%)','Time (years)'],v=>num(v,0)*num(v,1)*num(v,2)/100);
+add('compound','Compound Interest Calculator','Financial','💹','Estimate growth with annual compounding.',['Initial amount','Annual interest rate (%)','Years'],v=>num(v,0)*Math.pow(1+num(v,1)/100,num(v,2)));
+add('investment','Investment Calculator','Financial','📊','Estimate investment growth with regular monthly contributions.',['Initial investment','Monthly contribution','Annual return (%)','Years'],v=>{let p=num(v,0),m=num(v,1),r=num(v,2)/1200,n=num(v,3)*12;if(!n)return p;if(r===0)return p+m*n;return p*Math.pow(1+r,n)+m*(Math.pow(1+r,n)-1)/r});
+add('retirement','Retirement Savings Calculator','Financial','🌅','Estimate savings at retirement using monthly deposits.',['Current savings','Monthly contribution','Annual return (%)','Years'],v=>{let p=num(v,0),m=num(v,1),r=num(v,2)/1200,n=num(v,3)*12;if(!n)return p;if(r===0)return p+m*n;return p*Math.pow(1+r,n)+m*(Math.pow(1+r,n)-1)/r});
+add('salary','Salary Calculator','Financial','💼','Convert hourly pay into an estimated annual salary.',['Hourly wage','Hours per week','Weeks per year'],v=>num(v,0)*num(v,1)*num(v,2));
+add('takehome','Take-Home Pay Calculator','Financial','💵','Estimate pay after a percentage deduction.',['Gross pay','Deduction rate (%)'],v=>num(v,0)*(1-num(v,1)/100));
+add('tax','Income Tax Calculator','Financial','🧾','Estimate tax using a single rate you enter.',['Taxable income','Tax rate (%)'],v=>num(v,0)*num(v,1)/100);
+add('sales-tax','Sales Tax Calculator','Financial','🏷️','Calculate sales tax and the total price.',['Price before tax','Tax rate (%)'],v=>num(v,0)*(1+num(v,1)/100));
+add('discount','Discount Calculator','Financial','🛍️','Calculate savings and the final discounted price.',['Original price','Discount (%)'],v=>num(v,0)*(1-num(v,1)/100));
+add('roi','ROI Calculator','Financial','🎯','Calculate return on investment as a percentage.',['Initial investment','Final value'],v=>num(v,0)===0?'Initial investment cannot be zero.':(num(v,1)-num(v,0))/num(v,0)*100);
+add('budget','Budget Calculator','Financial','📒','Compare monthly income and expenses.',['Monthly income','Monthly expenses'],v=>num(v,0)-num(v,1));
+add('bmi','BMI Calculator','Fitness & Health','⚖️','Calculate body mass index from height and weight.',['Weight (kg)','Height (cm)'],v=>{let h=num(v,1)/100;return h>0?num(v,0)/(h*h):'Enter a height greater than zero.'});
+add('calorie','Calorie Calculator','Fitness & Health','🔥','Estimate daily calorie needs using the Mifflin-St Jeor equation.',['Age (years)','Height (cm)','Weight (kg)','Activity multiplier'],v=>{let a=num(v,0),h=num(v,1),w=num(v,2),act=num(v,3);return w>0&&h>0&&a>0?(10*w+6.25*h-5*a)*act:'Enter valid age, height and weight.'});
+add('bmr','BMR Calculator','Fitness & Health','❤️','Estimate basal metabolic rate using the Mifflin-St Jeor equation.',['Age (years)','Height (cm)','Weight (kg)','Equation adjustment (+5 or -161)'],v=>10*num(v,2)+6.25*num(v,1)-5*num(v,0)+num(v,3));
+add('pregnancy','Pregnancy Due Date Calculator','Fitness & Health','📅','Estimate a due date from the first day of the last menstrual period.',['Last menstrual period date'],v=>{let d=new Date(v[0]+'T12:00:00');if(isNaN(d))return 'Enter a valid date.';d.setDate(d.getDate()+280);return d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})});
+add('age','Age Calculator','Other','🎂','Calculate age from date of birth.',['Date of birth','Age at date (optional)'],v=>{let b=new Date(v[0]+'T00:00:00'),t=v[1]?new Date(v[1]+'T00:00:00'):new Date();if(isNaN(b)||b>t)return 'Enter valid dates.';let y=t.getFullYear()-b.getFullYear(),m=t.getMonth()-b.getMonth(),d=t.getDate()-b.getDate();if(d<0){m--;d+=new Date(t.getFullYear(),t.getMonth(),0).getDate()}if(m<0){y--;m+=12}return `${y} years, ${m} months, ${d} days`});
+add('percentage','Percentage Calculator','Math','％','Find a percentage of a number.',['Number','Percentage (%)'],v=>num(v,0)*num(v,1)/100);
+add('percent-change','Percentage Change Calculator','Math','↗️','Calculate percentage increase or decrease.',['Original value','New value'],v=>num(v,0)===0?'Original value cannot be zero.':(num(v,1)-num(v,0))/num(v,0)*100);
+add('fraction-decimal','Fraction to Decimal Calculator','Math','½','Convert a fraction into a decimal.',['Numerator','Denominator'],v=>num(v,1)===0?'Denominator cannot be zero.':num(v,0)/num(v,1));
+add('average','Average Calculator','Math','📊','Calculate the arithmetic mean of a list of numbers.',['Numbers separated by commas'],v=>{let a=String(v[0]).split(',').map(x=>Number(x.trim()));if(!a.length||a.some(x=>!Number.isFinite(x)))return 'Enter numbers separated by commas.';return a.reduce((s,x)=>s+x,0)/a.length});
+add('ratio','Ratio Calculator','Math','➗','Simplify a ratio using the greatest common divisor.',['First value','Second value'],v=>{let a=Math.abs(num(v,0)),b=Math.abs(num(v,1));if(!Number.isInteger(a)||!Number.isInteger(b))return 'Enter whole numbers.';if(a===0&&b===0)return 'At least one value must be non-zero.';let x=a,y=b;while(y)[x,y]=[y,x%y];return `${a/x} : ${b/x}`});
+add('sqrt','Square Root Calculator','Math','√','Calculate the square root of a number.',['Number'],v=>num(v,0)<0?'Enter a non-negative number.':Math.sqrt(num(v,0)));
+add('power','Exponent Calculator','Math','xʸ','Raise a number to a power.',['Base','Exponent'],v=>Math.pow(num(v,0),num(v,1)));
+add('pythagorean','Pythagorean Theorem Calculator','Math','📐','Find the hypotenuse of a right triangle.',['Side A','Side B'],v=>Math.hypot(num(v,0),num(v,1)));
+add('circle','Circle Calculator','Math','⭕','Calculate circle area and circumference from radius.',['Radius'],v=>{let r=num(v,0);return r<0?'Radius cannot be negative.':`Area: ${money(Math.PI*r*r)}; Circumference: ${money(2*Math.PI*r)}`});
+add('rectangle','Rectangle Area Calculator','Math','▭','Calculate area and perimeter of a rectangle.',['Length','Width'],v=>`Area: ${money(num(v,0)*num(v,1))}; Perimeter: ${money(2*(num(v,0)+num(v,1)))}`);
+add('scientific','Scientific Calculator','Math','🧪','Evaluate a basic mathematical expression. Use numbers and + - * / ( ).',['Expression'],v=>{let s=String(v[0]).trim();if(!/^[0-9+\-*/().\s%]+$/.test(s))return 'Use only numbers and basic operators (+, -, *, /, parentheses, %).';try{let r=Function('"use strict";return ('+s+')')();return Number.isFinite(r)?r:'Invalid expression.'}catch(e){return 'Invalid expression.'}});
+add('random','Random Number Generator','Math','🎲','Generate a random whole number in a range.',['Minimum integer','Maximum integer'],v=>{let a=Math.ceil(num(v,0)),b=Math.floor(num(v,1));return b<a?'Maximum must be at least the minimum.':Math.floor(Math.random()*(b-a+1))+a});
+add('length','Length Converter','Other','📏','Convert meters to feet.',['Length (meters)'],v=>`${money(num(v,0)*3.28084)} feet`);
+add('weight','Weight Converter','Other','⚖️','Convert kilograms to pounds.',['Weight (kilograms)'],v=>`${money(num(v,0)*2.2046226218)} pounds`);
+add('temperature','Temperature Converter','Other','🌡️','Convert Celsius to Fahrenheit.',['Temperature (°C)'],v=>`${money(num(v,0)*9/5+32)} °F`);
+add('speed','Speed Converter','Other','🚀','Convert kilometers per hour to miles per hour.',['Speed (km/h)'],v=>`${money(num(v,0)*0.621371)} mph`);
+add('volume','Volume Converter','Other','🧴','Convert liters to US gallons.',['Volume (liters)'],v=>`${money(num(v,0)*0.264172)} US gallons`);
+add('date-diff','Date Difference Calculator','Other','🗓️','Calculate the number of days between two dates.',['Start date','End date'],v=>{let a=new Date(v[0]+'T00:00:00'),b=new Date(v[1]+'T00:00:00');return isNaN(a)||isNaN(b)?'Enter valid dates.':`${Math.abs(Math.round((b-a)/86400000))} days`});
+add('fuel','Fuel Cost Calculator','Other','⛽','Estimate fuel cost for a journey.',['Distance (km)','Fuel use (liters per 100 km)','Price per liter'],v=>num(v,0)*num(v,1)/100*num(v,2));
+add('gpa','GPA Calculator','Other','🎓','Calculate a simple average grade point. Enter points separated by commas.',['Grade points separated by commas'],v=>{let a=String(v[0]).split(',').map(x=>Number(x.trim()));return a.length&&a.every(Number.isFinite)?a.reduce((s,x)=>s+x,0)/a.length:'Enter grade points separated by commas.'});
+const cats=[['Financial','💰','Loans, mortgages, savings, tax and personal finance.'],['Fitness & Health','❤️','General wellness and fitness estimators.'],['Math','🧮','Arithmetic, percentages, geometry and statistics.'],['Other','🔄','Dates, measurements, conversions and daily tools.']];
+let current=null,active='All',visible=C;
+function drawCats(){document.getElementById('categories').innerHTML=cats.map(c=>`<button class="cat" onclick="filterCat('${c[0]}')"><div class="emoji">${c[1]}</div><h3>${c[0]}</h3><p>${c[2]}</p></button>`).join('')}
+function draw(list=C,title='Popular Calculators'){visible=list;document.getElementById('listTitle').textContent=title;document.getElementById('count').textContent=list.length+' calculators';document.getElementById('grid').innerHTML=list.map(c=>`<article class="card" onclick="openCalc('${c.id}')"><div class="ico">${c.icon}</div><h3>${c.name}</h3><p>${c.desc}</p></article>`).join('');document.getElementById('empty').hidden=!!list.length}
+function filterCat(cat){active=cat;document.getElementById('search').value='';let list=cat==='All'?C:C.filter(c=>c.cat===cat);draw(list,cat==='All'?'Popular Calculators':cat+' Calculators');closePanel()}
+function doSearch(){let q=document.getElementById('search').value.toLowerCase().trim();let list=C.filter(c=>(c.name+' '+c.cat+' '+c.desc).toLowerCase().includes(q));draw(list,q?'Search Results':'Popular Calculators');closePanel()}
+document.getElementById('search').addEventListener('input',doSearch);
+function openCalc(id){current=C.find(c=>c.id===id);if(!current)return;document.getElementById('calcTitle').textContent=current.name;document.getElementById('calcDesc').textContent=current.desc;document.getElementById('fields').innerHTML=current.fields.map((f,i)=>{let type=/date/i.test(f)?'date':/separated by commas|expression/i.test(f)?'text':'number';return `<div class="field"><label for="v${i}">${f}</label><input id="v${i}" type="${type}" ${type==='number'?'step="any"':''} placeholder="Enter ${f}"></div>`}).join('');document.getElementById('result').style.display='none';document.getElementById('panel').style.display='block';document.getElementById('panel').scrollIntoView({behavior:'smooth',block:'start'})}
+function runCalc(){if(!current)return;let vals=current.fields.map((_,i)=>document.getElementById('v'+i).value);if(vals.some(x=>x.trim()==='')){alert('Please complete all fields.');return}let answer;try{answer=current.fn(vals)}catch(e){answer='Please check your input values.'}let box=document.getElementById('result');box.style.display='block';box.innerHTML=typeof answer==='number'&&Number.isFinite(answer)?`<span class="muted">Result</span><br><strong>${money(answer)}</strong>`:`<span class="muted">Result</span><br><strong>${String(answer)}</strong>`}
+function resetCalc(){if(!current)return;current.fields.forEach((_,i)=>document.getElementById('v'+i).value='');document.getElementById('result').style.display='none'}
+function closePanel(){document.getElementById('panel').style.display='none';current=null}
+drawCats();draw();
+</script>
+</body>
+</html>
